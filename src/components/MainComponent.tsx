@@ -20,15 +20,15 @@ import {
   FormControl,
   Select,
   Spinner,
-  Progress,
 } from "@chakra-ui/react";
 
 import { useEffect, useState } from "react";
 import axios from "axios";
-import PredictionsConfidenceChart from "./PredictionsConfidenceChart";
+import PredictionsConfidenceProgressChart from "./PredictionsConfidenceProgressChart";
 import PredictionsChartProps from "../types/PredictionsChartProps";
 import AppComponentProps from "@/types/AppComponentProps";
 import { Constants } from "../configs/common/constants";
+
 
 export const MainComponent: React.FC<AppComponentProps> = ({
   testDataStorageContainer,
@@ -47,7 +47,7 @@ export const MainComponent: React.FC<AppComponentProps> = ({
   const [fileName, setFileName] = useState<string>("");
 
   const [isLoading, setIsLoading] = useState<boolean | false>();
-  const [predictions, setPredictions] = useState<PredictionsChartProps[]>([]);
+  const [predictions, setPredictions] = useState<PredictionsChartProps | null>();
   const [predictionsSummary, setPredictionsSummary] = useState<string>("");
 
   const loadSelectedFile = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -68,12 +68,12 @@ export const MainComponent: React.FC<AppComponentProps> = ({
         //clear the image that was loaded previously
         setFileUpload(null);
         // clear the predictions that were displayed previously
-        setPredictions([]);
+        setPredictions(null);
       })
       .then(() => {
         console.log("test image " + event.target.value + " loaded from azure.");
         // if a new file is selected, clear the current predictions
-        setPredictions([]);
+        setPredictions(null);
         setFileName(event.target.value);
       })
       .catch((error) => {
@@ -102,7 +102,7 @@ export const MainComponent: React.FC<AppComponentProps> = ({
       console.log(predictions_json.detected_details);
       console.log(predictions_json.summary);
       setPredictionsSummary(predictions_json.summary);
-      const predictionsProps = predictions_json.detected_details.map(
+      const predictionsList = predictions_json.detected_details.map(
         (detail: any) => ({
           predictedLabel: detail.predictedLabel,
           confidenceLevel: Math.round(detail.confidenceLevel * 100),
@@ -110,10 +110,14 @@ export const MainComponent: React.FC<AppComponentProps> = ({
         })
       );
       // sort the predictions by confidence level
-      predictionsProps.sort(
+      predictionsList.sort(
         (a: any, b: any) => b.confidenceLevel - a.confidenceLevel
       );
 
+      const predictionsProps: PredictionsChartProps = {
+        predictionsList: predictionsList,
+        summary: predictions_json.summary,
+      };
       setPredictions(predictionsProps);
       console.log(predictionsProps);
       loadAnalyzedImageWithPredictions(response.data);
@@ -184,7 +188,7 @@ export const MainComponent: React.FC<AppComponentProps> = ({
     const reader = event.target as FileReader;
     if (reader.readyState === FileReader.DONE) {
       setImage(reader.result as string);
-      setPredictions([]);
+      setPredictions(null);
     }
   };
 
@@ -437,36 +441,24 @@ export const MainComponent: React.FC<AppComponentProps> = ({
         </Center>
       </Box>
 
-      {predictions && predictions.length > 0 && (
+      {predictions && predictions.predictionsList.length > 0 && (
         <Box
           width="100%"
           textAlign={"center"}
           fontSize={"xl"}
           fontWeight={"bold"}
-          
         >
           Prediction confidence levels
         </Box>
       )}
 
-      {predictions && predictions.length > 0 && (
-        <PredictionsConfidenceChart predictions={predictions} />
+      {predictions && predictions.predictionsList.length > 0 && (
+        <PredictionsConfidenceProgressChart
+          predictionsList={predictions.predictionsList}
+          summary={predictionsSummary}
+        />
       )}
-
-      {predictions && predictions.length > 0 && (
-        <Box
-          width="100%"
-          paddingTop={"15px"}
-          textAlign={"center"}
-          fontSize={"l"}
-          fontWeight={"bold"}
-          fontFamily="Menlo, monospace"
-          color={"gray.400"}
-        >
-          {predictionsSummary}
-        </Box>
-      )}
-
+      
       <Card
         data-image-section="image-card"
         width="100%"

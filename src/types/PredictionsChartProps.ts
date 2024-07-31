@@ -2,6 +2,7 @@ import PredictionsProps from "./PredictionsProps";
 
 // Define the props interface
 interface PredictionsChartProps {
-  predictions : PredictionsProps[];
+  predictionsList: PredictionsProps[];
+  summary: string;
 }
 export default PredictionsChartProps;

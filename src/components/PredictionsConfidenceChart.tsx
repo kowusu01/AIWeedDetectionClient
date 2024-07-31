@@ -17,10 +17,36 @@ import {
   YAxis,
 } from "recharts";
 import PredictionsProps from "@/types/PredictionsProps";
+import PredictionsChartProps from "@/types/PredictionsChartProps";
 
-const PredictionsConfidenceChart: React.FC<any> = ({ predictions }) => {
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Usage:
+//{predictions && predictions.predictionsList.length > 0 && (
+//        <PredictionsConfidenceChart predictionsList={predictions.predictionsList} summary={predictions.summary} />
+//     )}
+//
+//      {predictions && predictions.predictionsList.length > 0 && (
+//        <Box
+//          width="100%"
+//          paddingTop={"15px"}
+//          textAlign={"center"}
+//          fontSize={"l"}
+//          fontWeight={"bold"}
+//          fontFamily="Menlo, monospace"
+//          color={"gray.400"}
+//        >
+//          {predictionsSummary}
+//        </Box>
+//      )}
+//
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+const PredictionsConfidenceChart: React.FC<PredictionsChartProps> = (
+  predictionsProps: PredictionsChartProps
+) => {
   console.log("In PredictionsChartCard...");
-  console.log(predictions);
+  console.log(predictionsProps.predictionsList.length);
 
   //1. get the chart config so we can update the colors from the api call
   let chartConfig = new PredictionsChartConfig().getChartConfig();
@@ -30,7 +56,7 @@ const PredictionsConfidenceChart: React.FC<any> = ({ predictions }) => {
   let chartDataObject: any = {};
 
   // map the predictions to the chart data
-  predictions.map((prediction: PredictionsProps) => {
+  predictionsProps.predictionsList.map((prediction: PredictionsProps) => {
     // set the chart data object
     chartDataObject[prediction.predictedLabel] = prediction.confidenceLevel;
 
@@ -86,7 +112,7 @@ const PredictionsConfidenceChart: React.FC<any> = ({ predictions }) => {
         >
           <CartesianGrid horizontal={false} />
           <XAxis type="number" domain={[0, 100]} tickCount={3} />
-          <YAxis type="category"  hide />
+          <YAxis type="category" hide />
           <Legend wrapperStyle={{ position: "relative" }} />
           <Bar
             dataKey="Grass"
@@ -104,8 +130,7 @@ const PredictionsConfidenceChart: React.FC<any> = ({ predictions }) => {
             />
           </Bar>
 
-          <Bar dataKey="Weed" fill="var(--color-Weed)" radius={4} 
-            barSize={40}>
+          <Bar dataKey="Weed" fill="var(--color-Weed)" radius={4} barSize={40}>
             <LabelList
               dataKey="Weed"
               content={(props: LabelProps) => {
