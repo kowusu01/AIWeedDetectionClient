@@ -5,8 +5,8 @@ export class Constants {
     
     public static readonly LogLevel = "LogLevel";
 
-    public static readonly PREDICTIONS_ANALYZE_BY_FILE_ENDPOINT ="analyze/file/";
-    public static readonly PREDICTIONS_ANALYZE_BY_FILENAME_ENDPOINT ="analyze/filename/";
+    public static readonly PREDICTIONS_ANALYZE_BY_FILE_ENDPOINT ="prediction/analyze/file/";
+    public static readonly PREDICTIONS_ANALYZE_BY_FILENAME_ENDPOINT ="prediction/analyze/filename/";
     public static readonly PREDICTIONS_IMAGE_ENDPOINT ="prediction/image/";
     public static readonly PREDICTIONS_DETAILS_ENDPOINT="prediction/details/";
 

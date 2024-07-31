@@ -73,7 +73,7 @@ const PredictionsConfidenceChart: React.FC<any> = ({ predictions }) => {
   return (
     <ChartContainer
       config={chartConfig}
-      className="h-[150px] min-h-[100px] w-[50%]"
+      className="h-[200px] min-h-[100px] w-[50%]"
     >
       <ResponsiveContainer width="100%">
         <BarChart
@@ -81,18 +81,18 @@ const PredictionsConfidenceChart: React.FC<any> = ({ predictions }) => {
           accessibilityLayer
           data={chartData}
           barCategoryGap="30%"
-          barGap={20}
+          barGap={12}
           height={100}
         >
           <CartesianGrid horizontal={false} />
           <XAxis type="number" domain={[0, 100]} tickCount={3} />
-          <YAxis type="category" dataKey="" hide />
+          <YAxis type="category"  hide />
           <Legend wrapperStyle={{ position: "relative" }} />
           <Bar
             dataKey="Grass"
             fill="var(--color-Grass)"
             radius={4}
-            barSize={15}
+            barSize={40}
           >
             <LabelList
               dataKey="Grass"
@@ -105,7 +105,7 @@ const PredictionsConfidenceChart: React.FC<any> = ({ predictions }) => {
           </Bar>
 
           <Bar dataKey="Weed" fill="var(--color-Weed)" radius={4} 
-            barSize={15}>
+            barSize={40}>
             <LabelList
               dataKey="Weed"
               content={(props: LabelProps) => {

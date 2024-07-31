@@ -94,7 +94,9 @@ export const MainComponent: React.FC<AppComponentProps> = ({
 
     try {
       // proceed to read the analyzed image back from the server
-      let predictions_json = JSON.parse(response.data);
+
+      console.log(response.data);
+      let predictions_json = response.data;
       console.log("before mapping response to chart format...");
       console.log(predictions_json.detected_details.length);
       console.log(predictions_json.detected_details);
@@ -139,14 +141,13 @@ export const MainComponent: React.FC<AppComponentProps> = ({
   const loadAnalyzedImageWithPredictions = (data: any) => {
     console.log("reading prediction image from server...");
 
-    let predictions_json = JSON.parse(data);
-    console.log(predictions_json);
-    console.log(predictions_json.prediction_image_url);
+    console.log(data);
+    console.log(data.prediction_image_url);
 
     let url =
       apiBaseUrl +
       Constants.PREDICTIONS_IMAGE_ENDPOINT +
-      predictions_json.prediction_image_url;
+      data.prediction_image_url;
     axios
       .get(url, {
         responseType: "blob",
@@ -440,9 +441,9 @@ export const MainComponent: React.FC<AppComponentProps> = ({
         <Box
           width="100%"
           textAlign={"center"}
-          fontSize={"2xl"}
+          fontSize={"xl"}
           fontWeight={"bold"}
-          fontFamily="Menlo, monospace"
+          
         >
           Prediction confidence levels
         </Box>
