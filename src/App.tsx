@@ -23,6 +23,10 @@ function App() {
     const newApiBaseUrl = config.getAppConfigString(
       Constants.VITE_PREDICTIONS_API_ENDPOINT
     );
+
+    console.log("newTestDataStorageContainer: ", newTestDataStorageContainer);
+    console.log("newApiBaseUrl: ", newApiBaseUrl);
+
     const appProps = {
       testDataStorageContainer: newTestDataStorageContainer,
       apiBaseUrl: newApiBaseUrl,
