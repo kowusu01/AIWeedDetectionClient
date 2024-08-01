@@ -10,8 +10,8 @@ export class Constants {
     public static readonly PREDICTIONS_IMAGE_ENDPOINT ="prediction/image/";
     public static readonly PREDICTIONS_DETAILS_ENDPOINT="prediction/details/";
 
-    public static readonly DEFAULT_PREDICTIONS_API_ENDPOINT = "https://grasstestdata.blob.core.windows.net/grasstestdatacontainer/";
-    public static readonly DEFAULT_TEST_DATA_STORAGE_CONTAINER = "Analyze by filename";
+    public static readonly DEFAULT_PREDICTIONS_API_ENDPOINT = "https://aiweeddetectionapi.azurewebsites.net/";
+    public static readonly DEFAULT_TEST_DATA_STORAGE_CONTAINER = "https://grasstestdata.blob.core.windows.net/grasstestdatacontainer/";
 
 
     }
