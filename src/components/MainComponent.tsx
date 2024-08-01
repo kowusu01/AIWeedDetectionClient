@@ -29,7 +29,6 @@ import PredictionsChartProps from "../types/PredictionsChartProps";
 import AppComponentProps from "@/types/AppComponentProps";
 import { Constants } from "../configs/common/constants";
 
-
 export const MainComponent: React.FC<AppComponentProps> = ({
   testDataStorageContainer,
   apiBaseUrl,
@@ -47,7 +46,8 @@ export const MainComponent: React.FC<AppComponentProps> = ({
   const [fileName, setFileName] = useState<string>("");
 
   const [isLoading, setIsLoading] = useState<boolean | false>();
-  const [predictions, setPredictions] = useState<PredictionsChartProps | null>();
+  const [predictions, setPredictions] =
+    useState<PredictionsChartProps | null>();
   const [predictionsSummary, setPredictionsSummary] = useState<string>("");
 
   const loadSelectedFile = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -442,23 +442,12 @@ export const MainComponent: React.FC<AppComponentProps> = ({
       </Box>
 
       {predictions && predictions.predictionsList.length > 0 && (
-        <Box
-          width="100%"
-          textAlign={"center"}
-          fontSize={"xl"}
-          fontWeight={"bold"}
-        >
-          Prediction confidence levels
-        </Box>
-      )}
-
-      {predictions && predictions.predictionsList.length > 0 && (
         <PredictionsConfidenceProgressChart
           predictionsList={predictions.predictionsList}
           summary={predictionsSummary}
         />
       )}
-      
+
       <Card
         data-image-section="image-card"
         width="100%"
