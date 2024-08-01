@@ -37,7 +37,7 @@ export const MainComponent: React.FC<AppComponentProps> = ({
   const toast = useToast();
 
   // state object stores image as url - this is what is displayed on th screen
-  const [image, setImage] = useState<string |  undefined>();
+  const [image, setImage] = useState<string | undefined>();
 
   // stores the uploaded file as object - this is what is sent to the api
   const [fileUpload, setFileUpload] = useState<any | null>();
@@ -53,6 +53,7 @@ export const MainComponent: React.FC<AppComponentProps> = ({
   const loadSelectedFile = (event: React.ChangeEvent<HTMLSelectElement>) => {
     console.log("file selected: " + event.target.value);
     //let url = testDataStorageContainer + event.target.value;
+    console.log(`testDataStorageContainer ${testDataStorageContainer}`);
     let url = testDataStorageContainer + event.target.value;
     //
     https: axios
