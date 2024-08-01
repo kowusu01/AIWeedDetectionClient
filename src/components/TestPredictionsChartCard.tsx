@@ -15,7 +15,7 @@ const TestPredictionsChartCard: React.FC<any> = () => {
     { predicted: "Grass", confidence: 86 },
     { predicted: "Weed", confidence: 45 },
   ];
-  const CustomLabel = ({ x, y, width, value }) => {
+  const CustomLabel = ({ x, y, width, value }: { x: number, y: number, width: number, value: string | number | undefined }) => {
     // Render label with passed parameters
     return (
       <g>
