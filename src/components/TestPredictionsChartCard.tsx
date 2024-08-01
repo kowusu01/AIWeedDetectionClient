@@ -15,11 +15,27 @@ const TestPredictionsChartCard: React.FC<any> = () => {
     { predicted: "Grass", confidence: 86 },
     { predicted: "Weed", confidence: 45 },
   ];
-  const CustomLabel = ({ x, y, width, value }: { x: number, y: number, width: number, value: string | number | undefined }) => {
+  const CustomLabel = ({
+    x,
+    y,
+    width,
+    value,
+  }: {
+    x: string | number | undefined;
+    y: string | number | undefined;
+    width: string | number;
+    value: string | number;
+  }) => {
     // Render label with passed parameters
     return (
       <g>
-        <text x={x + width / 2} y={y} dy={-6} fill="#666" textAnchor="middle">
+        <text
+          x={(x as number) + (width as number) / 2}
+          y={y as number}
+          dy={-6}
+          fill="#666"
+          textAnchor="middle"
+        >
           {value}%
         </text>
       </g>
@@ -67,7 +83,12 @@ const TestPredictionsChartCard: React.FC<any> = () => {
                   // Now TypeScript knows the structure of props, including the payload property
                   const { x, y, width, value } = props;
                   return (
-                    <CustomLabel x={x} y={y} width={width} value={value} />
+                    <CustomLabel
+                      x={x}
+                      y={y}
+                      width={width ?? 0}
+                      value={Number(value) ?? 0}
+                    />
                   );
                 }}
               />
