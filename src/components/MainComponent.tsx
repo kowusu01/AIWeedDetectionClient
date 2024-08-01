@@ -1,11 +1,3 @@
-// create Component MainComponent
-// - use chakra-ui components
-// - component width takes 50% of the screen
-// - component has a top section and a bottom section
-// - top section width 15% of this area
-// - bottom section width 85% of this area
-// - bottom section hosts an image
-
 import {
   Box,
   Image,
