@@ -1,11 +1,14 @@
-
-import React from 'react';
-import { Box, CircularProgress, CircularProgressLabel, VStack } from "@chakra-ui/react";
+import React from "react";
+import {
+  Box,
+  CircularProgress,
+  CircularProgressLabel,
+  VStack,
+} from "@chakra-ui/react";
 import PredictionsChartProps from "@/types/PredictionsChartProps";
 
-
 ////////////////////////////////////////////////////////////////////////////////
-// 
+//
 // This component displays the predictions in a circular progress chart.
 // The predictions are passed as props to the component.
 //
@@ -74,7 +77,12 @@ const PredictionsConfidenceProgressChart: React.FC<PredictionsChartProps> = (
           alignItems="center"
         >
           {predictionsProps.predictionsList.map((prediction: any) => (
-            <VStack key={prediction.predictedLabel} m={2} paddingLeft={"10px"}>
+            <VStack
+              key={prediction.predictedLabel}
+              m={2}
+              paddingLeft={"25px"}
+              paddingRight={"25px"}
+            >
               <Box fontSize={"xl"} fontWeight={"bold"}>
                 {prediction.predictedLabel}
               </Box>
