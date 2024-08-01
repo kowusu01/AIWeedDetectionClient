@@ -37,7 +37,7 @@ export const MainComponent: React.FC<AppComponentProps> = ({
   const toast = useToast();
 
   // state object stores image as url - this is what is displayed on th screen
-  const [image, setImage] = useState<string | null>();
+  const [image, setImage] = useState<string |  undefined>();
 
   // stores the uploaded file as object - this is what is sent to the api
   const [fileUpload, setFileUpload] = useState<any | null>();

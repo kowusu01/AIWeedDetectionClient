@@ -74,13 +74,23 @@ const PredictionsConfidenceChart: React.FC<PredictionsChartProps> = (
   console.log("newly built chartData");
   console.log(chartData);
 
-  const CustomLabel = ({ x, y, width, value }) => {
+  const CustomLabel = ({
+    x = 0,
+    y,
+    width,
+    value,
+  }: {
+    x?: string | number | undefined;
+    y: string | number | undefined;
+    width: string | number | undefined;
+    value: string | number | undefined;
+  }) => {
     // Render label with passed parameters
     return (
       <g>
         <text
-          x={x + width / 2}
-          y={y}
+          x={Number(x) + Number(width) / 2}
+          y={Number(y)}
           dy={-6}
           textAnchor="middle"
           fill="grey"
