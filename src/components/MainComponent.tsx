@@ -441,37 +441,35 @@ export const MainComponent: React.FC<AppComponentProps> = ({
         />
       )}
 
-      <Card
-        data-image-section="image-card"
-        width="100%"
-        p="10"
-        margin={"15px"}
+      <Box
         borderWidth="2px"
         borderStyle="solid"
         position="relative"
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+        borderRadius={"lg"}
       >
-        <Box position="relative">
-          <Image
-            src={image}
-            alt=""
-            borderRadius={"lg"}
-            width="100%"
-            height="100%"
-          />
-          {isLoading && (
-            <Box
-              position="absolute"
-              top="50%"
-              left="50%"
-              transform="translate(-50%, -50%)"
-              zIndex="1"
-              textAlign="center"
-            >
-              <Spinner size="xl" fontWeight={"bold"} />
-            </Box>
-          )}
-        </Box>
-      </Card>
+        <Image
+          src={image}
+          alt=""
+          borderRadius={"lg"}
+          width="100%"
+          height="100%"
+        />
+        {isLoading && (
+          <Box
+            position="absolute"
+            top="50%"
+            left="50%"
+            transform="translate(-50%, -50%)"
+            zIndex="1"
+            textAlign="center"
+          >
+            <Spinner size="xl" fontWeight={"bold"} />
+          </Box>
+        )}
+      </Box>
 
       <Box
         width="100%"
@@ -480,7 +478,11 @@ export const MainComponent: React.FC<AppComponentProps> = ({
         borderWidth="2px"
         borderStyle="solid"
         borderRadius={"lg"}
-      ></Box>
+        textAlign={"center"}
+        fontSize={"xs"}
+      >
+        MIT License © 2024 Kwaku Owusu-Tieku | ver 1.0.0 revision 24081
+      </Box>
     </VStack>
   );
 };

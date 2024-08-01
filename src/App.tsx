@@ -19,10 +19,15 @@ function App() {
   useEffect(() => {
     const newTestDataStorageContainer = config.getAppConfigString(
       Constants.VITE_TEST_DATA_STORAGE_CONTAINER
-    );
+    )
+      ? config.getAppConfigString(Constants.VITE_TEST_DATA_STORAGE_CONTAINER)
+      : Constants.DEFAULT_TEST_DATA_STORAGE_CONTAINER;
+
     const newApiBaseUrl = config.getAppConfigString(
       Constants.VITE_PREDICTIONS_API_ENDPOINT
-    );
+    )
+      ? config.getAppConfigString(Constants.VITE_PREDICTIONS_API_ENDPOINT)
+      : Constants.DEFAULT_PREDICTIONS_API_ENDPOINT;
 
     console.log("newTestDataStorageContainer: ", newTestDataStorageContainer);
     console.log("newApiBaseUrl: ", newApiBaseUrl);
