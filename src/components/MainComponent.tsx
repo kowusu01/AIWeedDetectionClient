@@ -283,6 +283,11 @@ export const MainComponent: React.FC<AppComponentProps> = ({
       formData.append("file", fileUpload);
       setIsLoading(true);
 
+      console.log(
+        "submitting uploaded file " +
+          apiBaseUrl +
+          Constants.PREDICTIONS_ANALYZE_BY_FILE_ENDPOINT
+      );
       // attempt to send the file content to the server
       axios({
         method: "post",
@@ -290,7 +295,7 @@ export const MainComponent: React.FC<AppComponentProps> = ({
         data: formData,
         headers: {
           "Content-Type": "multipart/form-data",
-          responseType: "blob",
+          responseType: "json",
         },
       })
         .then((response) => {
