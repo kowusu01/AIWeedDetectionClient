@@ -11,13 +11,21 @@ import {
   FormControl,
   Select,
   Spinner,
+  HStack,
+  RadioGroup,
+  Stack,
+  Radio,
 } from "@chakra-ui/react";
 
-import { useEffect, useState } from "react";
 import axios from "axios";
+import { useEffect, useState } from "react";
+
 import PredictionsConfidenceProgressChart from "./PredictionsConfidenceProgressChart";
+import PredictionsConfidenceChart from "./PredictionsConfidenceChart";
+
 import PredictionsChartProps from "../types/PredictionsChartProps";
 import AppComponentProps from "@/types/AppComponentProps";
+
 import { Constants } from "../configs/common/constants";
 
 export const MainComponent: React.FC<AppComponentProps> = ({
@@ -26,6 +34,8 @@ export const MainComponent: React.FC<AppComponentProps> = ({
 }) => {
   // for displaying toast messages
   const toast = useToast();
+
+  const [visualization, setVisualization] = useState("1");
 
   // state object stores image as url - this is what is displayed on th screen
   const [image, setImage] = useState<string | undefined>();
@@ -302,6 +312,20 @@ export const MainComponent: React.FC<AppComponentProps> = ({
             position: "top-right",
             isClosable: true,
           });
+
+          if (error.response) {
+            // The request was made and the server responded with a status code
+            // that falls out of the range of 2xx
+            console.error("Error data:", error.response.data);
+            console.error("Error status:", error.response.status);
+            console.error("Error headers:", error.response.headers);
+          } else if (error.request) {
+            // The request was made but no response was received
+            console.error("Error request:", error.request);
+          } else {
+            // Something happened in setting up the request that triggered an Error
+            console.error("Error message:", error.message);
+          }
         });
     }
   };
@@ -347,6 +371,20 @@ export const MainComponent: React.FC<AppComponentProps> = ({
             position: "top-right",
             isClosable: true,
           });
+
+          if (error.response) {
+            // The request was made and the server responded with a status code
+            // that falls out of the range of 2xx
+            console.error("Error data:", error.response.data);
+            console.error("Error status:", error.response.status);
+            console.error("Error headers:", error.response.headers);
+          } else if (error.request) {
+            // The request was made but no response was received
+            console.error("Error request:", error.request);
+          } else {
+            // Something happened in setting up the request that triggered an Error
+            console.error("Error message:", error.message);
+          }
         });
     }
   };
@@ -434,13 +472,68 @@ export const MainComponent: React.FC<AppComponentProps> = ({
       </Box>
 
       {predictions && predictions.predictionsList.length > 0 && (
-        <PredictionsConfidenceProgressChart
-          predictionsList={predictions.predictionsList}
-          summary={predictionsSummary}
-        />
+        <Box
+          display={"flex"}
+          flexDir={"column"}
+          height={"100%"}
+          borderWidth={1}
+          w={"100%"}
+          alignItems={"center"}
+        >
+          <HStack>
+            {visualization === "1" && (
+              <Box width={"95%"}>
+                <PredictionsConfidenceChart
+                  predictionsList={predictions.predictionsList}
+                  summary={predictions.summary}
+                />
+              </Box>
+            )}
+
+            {visualization === "2" && (
+              <Box width={"95%"}>
+                <PredictionsConfidenceProgressChart
+                  predictionsList={predictions.predictionsList}
+                  summary={predictions.summary}
+                />
+              </Box>
+            )}
+          </HStack>
+
+          <HStack width="100%" spacing={4} alignItems="center">
+            <Box
+              width={"95%"}
+              paddingLeft={"130px"}
+              paddingTop={"15px"}
+              textAlign={"center"}
+              fontSize={"l"}
+              fontWeight={"bold"}
+              fontFamily="Menlo, monospace"
+              color={"gray.400"}
+            >
+              {predictions.summary}
+            </Box>
+            <Box
+              paddingRight={"5px"}
+              borderStyle={"solid"}
+              borderWidth={1}
+              margin={2}
+              padding={2}
+            >
+              <RadioGroup onChange={setVisualization} value={visualization}>
+                <Stack direction="row">
+                  <Radio value="1">Bar</Radio>
+                  <Radio value="2">Circular</Radio>
+                </Stack>
+              </RadioGroup>
+            </Box>
+          </HStack>
+        </Box>
       )}
 
       <Box
+        width={"100%"}
+        padding={"5px"}
         borderWidth="2px"
         borderStyle="solid"
         position="relative"

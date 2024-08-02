@@ -53,19 +53,13 @@ const PredictionsConfidenceProgressChart: React.FC<PredictionsChartProps> = (
 
   return (
     predictionsProps && (
-      <Box
-        display={"flex"}
-        flexDir={"column"}
-        height={"100%"}
-        borderWidth={1}
-        w={"100%"}
-      >
+      <Box display={"flex"} flexDir={"column"} height={"100%"} w={"100%"}>
         <Box
           display="flex"
           justifyContent="center"
           alignItems="center"
           width="100%"
-          fontSize={"2xl"}
+          fontSize={"xl"}
           fontWeight={"bold"}
         >
           Prediction confidence levels
@@ -105,15 +99,6 @@ const PredictionsConfidenceProgressChart: React.FC<PredictionsChartProps> = (
               </Box>
             </VStack>
           ))}
-        </Box>
-        <Box
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          width="100%"
-          paddingBottom={"10px"}
-        >
-          {predictionsProps.summary}
         </Box>
       </Box>
     )

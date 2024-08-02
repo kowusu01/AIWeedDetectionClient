@@ -18,10 +18,12 @@ import {
 } from "recharts";
 import PredictionsProps from "@/types/PredictionsProps";
 import PredictionsChartProps from "@/types/PredictionsChartProps";
+import { Box } from "@chakra-ui/react";
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 // Usage:
+//
 //{predictions && predictions.predictionsList.length > 0 && (
 //        <PredictionsConfidenceChart predictionsList={predictions.predictionsList} summary={predictions.summary} />
 //     )}
@@ -107,52 +109,80 @@ const PredictionsConfidenceChart: React.FC<PredictionsChartProps> = (
   //const test_chartData = [{ Grass: 90, Weed: 45 }];
 
   return (
-    <ChartContainer
-      config={chartConfig}
-      className="h-[200px] min-h-[100px] w-[50%]"
+    <Box
+      display={"flex"}
+      flexDir={"column"}
+      height={"100%"}
+      w={"100%"}
+      alignItems={"center"}
     >
-      <ResponsiveContainer width="100%">
-        <BarChart
-          layout="vertical"
-          accessibilityLayer
-          data={chartData}
-          barCategoryGap="30%"
-          barGap={12}
-          height={100}
-        >
-          <CartesianGrid horizontal={false} />
-          <XAxis type="number" domain={[0, 100]} tickCount={3} />
-          <YAxis type="category" hide />
-          <Legend wrapperStyle={{ position: "relative" }} />
-          <Bar
-            dataKey="Grass"
-            fill="var(--color-Grass)"
-            radius={4}
-            barSize={40}
+      <Box
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        width="100%"
+        fontSize={"xl"}
+        fontWeight={"bold"}
+      >
+        Prediction confidence levels
+      </Box>
+      <ChartContainer
+        config={chartConfig}
+        className="h-[200px] min-h-[100px] "
+      >
+        <ResponsiveContainer width="100%">
+          <BarChart
+            layout="vertical"
+            accessibilityLayer
+            data={chartData}
+            barCategoryGap="30%"
+            barGap={12}
+            height={100}
           >
-            <LabelList
+            <CartesianGrid horizontal={false} />
+            <XAxis type="number" domain={[0, 100]} tickCount={3} />
+            <YAxis type="category" hide />
+            <Legend wrapperStyle={{ position: "relative" }} />
+            <Bar
               dataKey="Grass"
-              content={(props: LabelProps) => {
-                // Now TypeScript knows the structure of props, including the payload property
-                const { x, y, width, value } = props;
-                return <CustomLabel x={x} y={y} width={width} value={value} />;
-              }}
-            />
-          </Bar>
+              fill="var(--color-Grass)"
+              radius={4}
+              barSize={30}
+            >
+              <LabelList
+                dataKey="Grass"
+                content={(props: LabelProps) => {
+                  // Now TypeScript knows the structure of props, including the payload property
+                  const { x, y, width, value } = props;
+                  return (
+                    <CustomLabel x={x} y={y} width={width} value={value} />
+                  );
+                }}
+              />
+            </Bar>
 
-          <Bar dataKey="Weed" fill="var(--color-Weed)" radius={4} barSize={40}>
-            <LabelList
+            <Bar
               dataKey="Weed"
-              content={(props: LabelProps) => {
-                // Now TypeScript knows the structure of props, including the payload property
-                const { x, y, width, value } = props;
-                return <CustomLabel x={x} y={y} width={width} value={value} />;
-              }}
-            />
-          </Bar>
-        </BarChart>
-      </ResponsiveContainer>
-    </ChartContainer>
+              fill="var(--color-Weed)"
+              radius={4}
+              barSize={30}
+            >
+              <LabelList
+                dataKey="Weed"
+                content={(props: LabelProps) => {
+                  // Now TypeScript knows the structure of props, including the payload property
+                  const { x, y, width, value } = props;
+                  return (
+                    <CustomLabel x={x} y={y} width={width} value={value} />
+                  );
+                }}
+              />
+            </Bar>
+          </BarChart>
+        </ResponsiveContainer>
+      </ChartContainer>
+      
+    </Box>
   );
 };
 
