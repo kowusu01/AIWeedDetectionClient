@@ -118,7 +118,7 @@ export const MainComponent: React.FC<AppComponentProps> = ({
 
       const predictionsProps: PredictionsChartProps = {
         predictionsList: predictionsList,
-        summary: predictions_json.summary,
+        summary: predictionsSummary,
       };
       setPredictions(predictionsProps);
       console.log(predictionsProps);
@@ -534,8 +534,6 @@ export const MainComponent: React.FC<AppComponentProps> = ({
       <Box
         width={"100%"}
         padding={"5px"}
-        borderWidth="2px"
-        borderStyle="solid"
         position="relative"
         display="flex"
         alignItems="center"
@@ -567,13 +565,12 @@ export const MainComponent: React.FC<AppComponentProps> = ({
         width="100%"
         marginTop={"5px"}
         marginBottom={"5px"}
-        borderWidth="2px"
         borderStyle="solid"
         borderRadius={"lg"}
         textAlign={"center"}
         fontSize={"xs"}
       >
-        MIT License © 2024 Kwaku Owusu-Tieku | ver 1.0.0 revision 24081
+        MIT License © 2024 Kwaku Owusu-Tieku | ver 1.0.0 revision 24082
       </Box>
     </VStack>
   );
