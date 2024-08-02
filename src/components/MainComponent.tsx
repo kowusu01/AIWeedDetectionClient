@@ -273,6 +273,17 @@ export const MainComponent: React.FC<AppComponentProps> = ({
   // - the server returns the result of the analysis including the filename/url
   //  of the analysed which has aread marked grass/weed if grtass or wee were detected.
   const submitUploadedFile = () => {
+    toast({
+      status: "success",
+      title: "Info",
+      description:
+        "File upload is currently disabled. Please use one of our test images.",
+      duration: 5000,
+      position: "top-right",
+      isClosable: true,
+    });
+    return;
+    /*
     if (fileUpload) {
       // if a file has been selected:
       // and has been stored in the state object 'fileUpload'
@@ -333,6 +344,8 @@ export const MainComponent: React.FC<AppComponentProps> = ({
           }
         });
     }
+
+    */
   };
 
   const submitSelectedFile = () => {
