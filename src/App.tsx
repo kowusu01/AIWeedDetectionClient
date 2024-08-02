@@ -17,24 +17,30 @@ function App() {
   });
 
   useEffect(() => {
-    const newTestDataStorageContainer = config.getAppConfigString(
+    let storageContainerUrl = config.getAppConfigString(
       Constants.VITE_TEST_DATA_STORAGE_CONTAINER
     )
-      ? config.getAppConfigString(Constants.VITE_TEST_DATA_STORAGE_CONTAINER)
-      : Constants.DEFAULT_TEST_DATA_STORAGE_CONTAINER;
-
-    const newApiBaseUrl = config.getAppConfigString(
+    if (!storageContainerUrl) {
+      storageContainerUrl = Constants.DEFAULT_TEST_DATA_STORAGE_CONTAINER;
+      console.log(
+        "storageContainer url is not set, using default: ",
+        storageContainerUrl
+      );
+    }
+    let apiBaseUrl = config.getAppConfigString(
       Constants.VITE_PREDICTIONS_API_ENDPOINT
     )
-      ? config.getAppConfigString(Constants.VITE_PREDICTIONS_API_ENDPOINT)
-      : Constants.DEFAULT_PREDICTIONS_API_ENDPOINT;
-
-    console.log("newTestDataStorageContainer: ", newTestDataStorageContainer);
-    console.log("newApiBaseUrl: ", newApiBaseUrl);
+    if (!apiBaseUrl) {
+      apiBaseUrl = Constants.DEFAULT_PREDICTIONS_API_ENDPOINT;
+            console.log(
+              "apiBaseUrl is not set, using default: ",
+              apiBaseUrl
+            );
+    }
 
     const appProps = {
-      testDataStorageContainer: newTestDataStorageContainer,
-      apiBaseUrl: newApiBaseUrl,
+      testDataStorageContainer: storageContainerUrl,
+      apiBaseUrl: apiBaseUrl,
     };
     setAppComponentProps(appProps);
   }, []);
