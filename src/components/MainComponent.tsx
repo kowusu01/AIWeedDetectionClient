@@ -530,7 +530,7 @@ export const MainComponent: React.FC<AppComponentProps> = ({
           <HStack width="100%" spacing={4} alignItems="center">
             <Box
               width={"95%"}
-              paddingLeft={"130px"}
+              paddingLeft={"10px"}
               paddingTop={"15px"}
               textAlign={"center"}
               fontSize={"l"}
