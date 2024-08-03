@@ -52,6 +52,11 @@ export const MainComponent: React.FC<AppComponentProps> = ({
   const [predictionsSummary, setPredictionsSummary] = useState<string>("");
 
   const loadSelectedFile = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    if (!event.target.value) {
+      setFileName("");
+      setImage("");
+      return;
+    }
     console.log("file selected: " + event.target.value);
     //let url = testDataStorageContainer + event.target.value;
     console.log(`testDataStorageContainer ${testDataStorageContainer}`);
@@ -411,20 +416,25 @@ export const MainComponent: React.FC<AppComponentProps> = ({
     <VStack>
       <Box
         width="100%"
-        marginTop={"50px"}
+        marginTop={"70px"}
         borderRadius={"lg"}
         minWidth={["500px", "500px", "500px"]}
       >
         <Center>
           <Flex>
-            <Box width={"200px"}
+            <Box
+              width={"200px"}
               flex={1}
               borderWidth={1}
               margin={5}
               paddingTop={5}
             >
               <FormControl id="test-image-select">
-                <FormLabel textAlign={"center"}>
+                <FormLabel
+                  textAlign={"center"}
+                  color={"gray.400"}
+                  fontFamily={"sm"}
+                >
                   Test with sample image
                 </FormLabel>
                 <Center>
@@ -446,7 +456,12 @@ export const MainComponent: React.FC<AppComponentProps> = ({
             <Box flex={1} borderWidth={1} margin={5} width={"200px"}>
               <Center>
                 <FormControl id="test-image-select">
-                  <FormLabel textAlign={"center"} padding={5}>
+                  <FormLabel
+                    color={"gray.400"}
+                    textAlign={"center"}
+                    padding={5}
+                    fontSize={"sm"}
+                  >
                     Upload your own image (max. 2MB)
                   </FormLabel>
 
@@ -461,6 +476,7 @@ export const MainComponent: React.FC<AppComponentProps> = ({
                       variant="solid"
                       size="sm"
                       w="100px"
+                      fontSize={"xs"}
                       marginBottom="5"
                     >
                       Upload
@@ -482,7 +498,6 @@ export const MainComponent: React.FC<AppComponentProps> = ({
       </Box>
 
       <Button
-        colorScheme="teal"
         bg="#008080"
         color="white"
         _hover={{ bg: "#006666" }}
@@ -492,11 +507,11 @@ export const MainComponent: React.FC<AppComponentProps> = ({
         spinnerPlacement="end"
         marginTop="7px"
         size="sm"
-        w="50px"
+        w="100px"
         marginBottom={"5"}
         onClick={handleSubmit}
       >
-        Go
+        Analyze
       </Button>
       {predictions && predictions.predictionsList.length > 0 && (
         <Box
@@ -558,35 +573,37 @@ export const MainComponent: React.FC<AppComponentProps> = ({
         </Box>
       )}
 
-      <Box
-        width={"100%"}
-        padding={"5px"}
-        position="relative"
-        display="flex"
-        alignItems="center"
-        justifyContent="center"
-        borderRadius={"lg"}
-      >
-        <Image
-          src={image}
-          alt=""
+      {image && (
+        <Box
+          width={"100%"}
+          padding={"5px"}
+          position="relative"
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
           borderRadius={"lg"}
-          width="100%"
-          height="100%"
-        />
-        {isLoading && (
-          <Box
-            position="absolute"
-            top="50%"
-            left="50%"
-            transform="translate(-50%, -50%)"
-            zIndex="1"
-            textAlign="center"
-          >
-            <Spinner size="xl" fontWeight={"bold"} />
-          </Box>
-        )}
-      </Box>
+        >
+          <Image
+            src={image}
+            alt=""
+            borderRadius={"lg"}
+            width="100%"
+            height="100%"
+          />
+          {isLoading && (
+            <Box
+              position="absolute"
+              top="50%"
+              left="50%"
+              transform="translate(-50%, -50%)"
+              zIndex="1"
+              textAlign="center"
+            >
+              <Spinner size="xl" fontWeight={"bold"} />
+            </Box>
+          )}
+        </Box>
+      )}
 
       <Box
         width="100%"

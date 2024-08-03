@@ -28,8 +28,7 @@ function Header() {
           fontFamily={"Roboto, sans-serif"}
           color={"gray.400"}
         >
-          A custom-trained Azure AI Vision to detect weed and grass in an
-          image.
+          A custom-trained Azure AI Vision to detect weed and grass in an image.
         </Text>
       </Box>
       <Box marginTop={"105px"}>

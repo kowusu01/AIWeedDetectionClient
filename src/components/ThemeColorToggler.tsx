@@ -11,7 +11,9 @@ export default function ThemeColorToggler() {
           isChecked={colorMode === "dark"}
           onChange={toggleColorMode}
         ></Switch>
-        <Text>Theme {colorMode === "light" ? "Light" : "Dark"}</Text>
+        <Text fontFamily="Menlo, monospace" color={"gray.400"}>
+          {colorMode === "light" ? "" : ""}
+        </Text>
       </HStack>
     </>
   );
