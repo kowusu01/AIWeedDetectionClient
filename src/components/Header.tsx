@@ -28,17 +28,8 @@ function Header() {
           fontFamily={"Roboto, sans-serif"}
           color={"gray.400"}
         >
-          Upload a picture of your lawn and let's see if you have weed.
-        </Text>
-        <Text
-          marginLeft={"25px"}
-          
-          fontSize={"xs"}
-          fontFamily={"Roboto, sans-serif"}
-          color={"gray.400"}
-        >
-          This app uses a custom-trained Azure AI Vision model to detect weed
-          and grass in an image.
+          A custom-trained Azure AI Vision to detect weed and grass in an
+          image.
         </Text>
       </Box>
       <Box marginTop={"105px"}>

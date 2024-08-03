@@ -123,13 +123,11 @@ const PredictionsConfidenceChart: React.FC<PredictionsChartProps> = (
         width="100%"
         fontSize={"xl"}
         fontWeight={"bold"}
+        p={5}
       >
         Prediction confidence levels
       </Box>
-      <ChartContainer
-        config={chartConfig}
-        className="h-[200px] min-h-[100px] "
-      >
+      <ChartContainer config={chartConfig} className="h-[200px] min-h-[100px] ">
         <ResponsiveContainer width="100%">
           <BarChart
             layout="vertical"
@@ -181,7 +179,6 @@ const PredictionsConfidenceChart: React.FC<PredictionsChartProps> = (
           </BarChart>
         </ResponsiveContainer>
       </ChartContainer>
-      
     </Box>
   );
 };

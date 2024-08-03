@@ -411,53 +411,63 @@ export const MainComponent: React.FC<AppComponentProps> = ({
     <VStack>
       <Box
         width="100%"
-        marginTop={"80px"}
-        p={"5px"}
-        borderWidth="2px"
-        borderStyle="solid"
+        marginTop={"50px"}
         borderRadius={"lg"}
         minWidth={["500px", "500px", "500px"]}
       >
         <Center>
           <Flex>
-            <Box flex={1} padding={"15px"} borderWidth={1} margin={5}>
+            <Box width={"200px"}
+              flex={1}
+              borderWidth={1}
+              margin={5}
+              paddingTop={5}
+            >
               <FormControl id="test-image-select">
-                <FormLabel>Test with sample image</FormLabel>
-                <Select
-                  placeholder="Select ..."
-                  onChange={loadSelectedFile}
-                  width={"200px"}
-                >
-                  <option value="test-1-all-grass.JPG">lawn 1</option>
-                  <option value="test-2-all-weed.JPG">lawn 2</option>
-                  <option value="test-2-mixed.JPG">lawn 3</option>
-                  <option value="test-5-mixed.JPG">lawn 4</option>
-                  <option value="test-7-mixed.JPG">lawn 5</option>
-                  <option value="test-11-all-grass.JPG">lawn 6</option>
-                </Select>
+                <FormLabel textAlign={"center"}>
+                  Test with sample image
+                </FormLabel>
+                <Center>
+                  <Select
+                    placeholder="Select ..."
+                    onChange={loadSelectedFile}
+                    width={"150px"}
+                  >
+                    <option value="test-1-all-grass.JPG">lawn 1</option>
+                    <option value="test-2-all-weed.JPG">lawn 2</option>
+                    <option value="test-2-mixed.JPG">lawn 3</option>
+                    <option value="test-5-mixed.JPG">lawn 4</option>
+                    <option value="test-7-mixed.JPG">lawn 5</option>
+                    <option value="test-11-all-grass.JPG">lawn 6</option>
+                  </Select>
+                </Center>
               </FormControl>
             </Box>
-            <Box flex={1} padding={"15px"} borderWidth={1} margin={5}>
-              <FormControl id="test-image-select">
-                <FormLabel>Upload your own image (max. 2MB)</FormLabel>
-                <Button
-                  colorScheme="teal"
-                  bg="#008080"
-                  color="white"
-                  _hover={{ bg: "#006666" }}
-                  alignContent={"center"}
-                  as="label"
-                  htmlFor="file-upload"
-                  variant="solid"
-                  size="sm"
-                  marginTop="5"
-                  marginRight="5px"
-                  w="100px"
-                  marginBottom="5"
-                >
-                  Upload image
-                </Button>
-              </FormControl>
+            <Box flex={1} borderWidth={1} margin={5} width={"200px"}>
+              <Center>
+                <FormControl id="test-image-select">
+                  <FormLabel textAlign={"center"} padding={5}>
+                    Upload your own image (max. 2MB)
+                  </FormLabel>
+
+                  <Center>
+                    <Button
+                      colorScheme="teal"
+                      bg="#008080"
+                      color="white"
+                      _hover={{ bg: "#006666" }}
+                      as="label"
+                      htmlFor="file-upload"
+                      variant="solid"
+                      size="sm"
+                      w="100px"
+                      marginBottom="5"
+                    >
+                      Upload
+                    </Button>
+                  </Center>
+                </FormControl>
+              </Center>
 
               <Input
                 id="file-upload"
@@ -467,28 +477,27 @@ export const MainComponent: React.FC<AppComponentProps> = ({
                 onChange={handleUploadFromFile}
               />
             </Box>
-
-            <Button
-              colorScheme="teal"
-              bg="#008080"
-              color="white"
-              _hover={{ bg: "#006666" }}
-              isDisabled={(!fileUpload && !fileName) || isLoading}
-              isLoading={isLoading}
-              loadingText="Processing"
-              spinnerPlacement="end"
-              marginTop="78px"
-              size="sm"
-              w="100px"
-              marginBottom={"5"}
-              onClick={handleSubmit}
-            >
-              Submit
-            </Button>
           </Flex>
         </Center>
       </Box>
 
+      <Button
+        colorScheme="teal"
+        bg="#008080"
+        color="white"
+        _hover={{ bg: "#006666" }}
+        isDisabled={(!fileUpload && !fileName) || isLoading}
+        isLoading={isLoading}
+        loadingText="Processing"
+        spinnerPlacement="end"
+        marginTop="7px"
+        size="sm"
+        w="50px"
+        marginBottom={"5"}
+        onClick={handleSubmit}
+      >
+        Go
+      </Button>
       {predictions && predictions.predictionsList.length > 0 && (
         <Box
           display={"flex"}
