@@ -134,7 +134,7 @@ const PredictionsConfidenceChart: React.FC<PredictionsChartProps> = (
             accessibilityLayer
             data={chartData}
             barCategoryGap="30%"
-            barGap={12}
+            barGap={"30"}
             height={100}
           >
             <CartesianGrid horizontal={false} />

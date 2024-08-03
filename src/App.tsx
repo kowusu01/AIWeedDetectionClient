@@ -57,7 +57,7 @@ function App() {
           area={"nav"}
           w="50%"
           m="auto"
-          minWidth={["600px", "600px", "600px"]}
+          minWidth={["400px", "400px", "400px"]}
         >
           <Header />
           <MainComponent {...mainComponentProps} />
