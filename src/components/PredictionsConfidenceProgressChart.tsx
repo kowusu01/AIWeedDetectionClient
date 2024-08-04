@@ -61,6 +61,7 @@ const PredictionsConfidenceProgressChart: React.FC<PredictionsChartProps> = (
           width="100%"
           fontSize={"xl"}
           fontWeight={"bold"}
+          p={5}
         >
           Prediction confidence levels
         </Box>

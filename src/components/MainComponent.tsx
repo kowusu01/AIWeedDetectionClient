@@ -35,7 +35,12 @@ export const MainComponent: React.FC<AppComponentProps> = ({
   // for displaying toast messages
   const toast = useToast();
 
-  const [visualization, setVisualization] = useState("1");
+  const VISUALIZATION_TYPE_BAR_CHART = "1";
+  const VISUALIZATION_TYPE_CIRCULAR_CHART = "2";
+
+  const [visualization, setVisualization] = useState(
+    VISUALIZATION_TYPE_CIRCULAR_CHART
+  );
 
   // state object stores image as url - this is what is displayed on th screen
   const [image, setImage] = useState<string | undefined>();
@@ -430,11 +435,7 @@ export const MainComponent: React.FC<AppComponentProps> = ({
               paddingTop={5}
             >
               <FormControl id="test-image-select">
-                <FormLabel
-                  textAlign={"center"}
-                  color={"gray.400"}
-                  fontFamily={"sm"}
-                >
+                <FormLabel textAlign={"center"} color={"gray.400"}>
                   Test with sample image
                 </FormLabel>
                 <Center>
@@ -467,16 +468,14 @@ export const MainComponent: React.FC<AppComponentProps> = ({
 
                   <Center>
                     <Button
-                      colorScheme="teal"
-                      bg="#008080"
+                      bg="#5DBEA3"
                       color="white"
-                      _hover={{ bg: "#006666" }}
+                      _hover={{ bg: "#5ADBB5" }}
                       as="label"
                       htmlFor="file-upload"
                       variant="solid"
                       size="sm"
-                      w="100px"
-                      fontSize={"xs"}
+                      fontSize={"sm"}
                       marginBottom="5"
                     >
                       Upload
@@ -498,16 +497,14 @@ export const MainComponent: React.FC<AppComponentProps> = ({
       </Box>
 
       <Button
-        bg="#008080"
+        bg="#5DBEA3"
         color="white"
-        _hover={{ bg: "#006666" }}
+        _hover={{ bg: "#5ADBB5" }}
         isDisabled={(!fileUpload && !fileName) || isLoading}
         isLoading={isLoading}
         loadingText="Processing"
         spinnerPlacement="end"
         marginTop="7px"
-        size="sm"
-        w="100px"
         marginBottom={"5"}
         onClick={handleSubmit}
       >
@@ -523,7 +520,7 @@ export const MainComponent: React.FC<AppComponentProps> = ({
           alignItems={"center"}
         >
           <HStack>
-            {visualization === "1" && (
+            {visualization === VISUALIZATION_TYPE_BAR_CHART && (
               <Box width={"95%"}>
                 <PredictionsConfidenceChart
                   predictionsList={predictions.predictionsList}
@@ -532,7 +529,7 @@ export const MainComponent: React.FC<AppComponentProps> = ({
               </Box>
             )}
 
-            {visualization === "2" && (
+            {visualization === VISUALIZATION_TYPE_CIRCULAR_CHART && (
               <Box width={"95%"}>
                 <PredictionsConfidenceProgressChart
                   predictionsList={predictions.predictionsList}
