@@ -51,10 +51,10 @@ jobs:
         with:
           node-version: '20'
 
-      #- name: Create .env file
-      #  run: |
-      #    echo "VITE_PREDICTIONS_API_ENDPOINT=${{env.VITE_PREDICTIONS_API_ENDPOINT}}" >> .env
-      #    echo "VITE_TEST_DATA_STORAGE_CONTAINER=${{env.VITE_TEST_DATA_STORAGE_CONTAINER}}" >> .env
+      - name: Create .env file
+        run: |
+          echo "VITE_PREDICTIONS_API_ENDPOINT=${{env.VITE_PREDICTIONS_API_ENDPOINT}}" >> .env
+          echo "VITE_TEST_DATA_STORAGE_CONTAINER=${{env.VITE_TEST_DATA_STORAGE_CONTAINER}}" >> .env
           
       - name: Install dependencies
         run: npm install
