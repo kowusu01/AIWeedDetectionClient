@@ -1,0 +1,9 @@
+{
+  "routes": [
+    {
+      "route": "/*",
+      "redirect": "https://web.aiweeddetection.thirdoperand.com/{*}",
+      "statusCode": 301
+    }
+  ]
+}
