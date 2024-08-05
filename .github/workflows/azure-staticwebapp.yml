@@ -21,6 +21,9 @@ on:
 
 # Environment variables available to all jobs and steps in this workflow
 env:
+  VITE_PREDICTIONS_API_ENDPOINT: ${{secrets.VITE_PREDICTIONS_API_ENDPOINT}}
+  VITE_TEST_DATA_STORAGE_CONTAINER: ${{secrets.VITE_TEST_DATA_STORAGE_CONTAINER}}
+  
   APP_LOCATION: "/" # location of your client code
   API_LOCATION: "api" # location of your api source code - optional
   APP_ARTIFACT_LOCATION: "build" # location of client code build output
@@ -48,6 +51,11 @@ jobs:
         with:
           node-version: '20'
 
+      #- name: Create .env file
+      #  run: |
+      #    echo "VITE_PREDICTIONS_API_ENDPOINT=${{env.VITE_PREDICTIONS_API_ENDPOINT}}" >> .env
+      #    echo "VITE_TEST_DATA_STORAGE_CONTAINER=${{env.VITE_TEST_DATA_STORAGE_CONTAINER}}" >> .env
+          
       - name: Install dependencies
         run: npm install
 
