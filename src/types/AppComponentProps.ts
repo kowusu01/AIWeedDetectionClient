@@ -1,5 +1,5 @@
 interface AppComponentProps {
-  testDataStorageContainer: string;
+  testDataStorageContainerUrl: string;
   apiBaseUrl: string;
 }
 

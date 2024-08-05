@@ -29,7 +29,7 @@ import AppComponentProps from "@/types/AppComponentProps";
 import { Constants } from "../configs/common/constants";
 
 export const MainComponent: React.FC<AppComponentProps> = ({
-  testDataStorageContainer,
+  testDataStorageContainerUrl,
   apiBaseUrl,
 }) => {
   // for displaying toast messages
@@ -63,10 +63,7 @@ export const MainComponent: React.FC<AppComponentProps> = ({
       return;
     }
     console.log("file selected: " + event.target.value);
-    //let url = testDataStorageContainer + event.target.value;
-    console.log(`testDataStorageContainer ${testDataStorageContainer}`);
-    let url = testDataStorageContainer + event.target.value;
-    //
+    let url = testDataStorageContainerUrl + event.target.value;
     https: axios
       .get(url, {
         responseType: "blob",
