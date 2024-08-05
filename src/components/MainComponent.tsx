@@ -106,7 +106,6 @@ export const MainComponent: React.FC<AppComponentProps> = ({
 
       console.log(response.data);
       let predictions_json = response.data;
-      console.log("before mapping response to chart format...");
       console.log(predictions_json.detected_details.length);
       console.log(predictions_json.detected_details);
       console.log(predictions_json.summary);
@@ -130,7 +129,6 @@ export const MainComponent: React.FC<AppComponentProps> = ({
       setPredictions(predictionsProps);
       console.log(predictionsProps);
       loadAnalyzedImageWithPredictions(response.data);
-      console.log("before mapping response to chart format...");
     } catch (error) {
       console.log(error);
       toast({
@@ -280,17 +278,6 @@ export const MainComponent: React.FC<AppComponentProps> = ({
   // - the server returns the result of the analysis including the filename/url
   //  of the analysed which has aread marked grass/weed if grtass or wee were detected.
   const submitUploadedFile = () => {
-    toast({
-      status: "success",
-      title: "Info",
-      description:
-        "File upload is currently disabled. Please use one of our test images.",
-      duration: 5000,
-      position: "top-right",
-      isClosable: true,
-    });
-    return;
-    /*
     if (fileUpload) {
       // if a file has been selected:
       // and has been stored in the state object 'fileUpload'
@@ -351,8 +338,6 @@ export const MainComponent: React.FC<AppComponentProps> = ({
           }
         });
     }
-
-    */
   };
 
   const submitSelectedFile = () => {
