@@ -2,7 +2,6 @@
   "routes": [
     {
       "route": "/*",
-      "redirect": "https://web.aigrassdetection.thirdoperand.com/{*}",
       "statusCode": 301
     }
   ]
