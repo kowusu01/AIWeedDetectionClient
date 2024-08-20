@@ -9,9 +9,16 @@ The Weed detection application is an AI image classification applicsation. It ta
 
 ## Sample analysis
 
-| Annotated Image                                                               | Predictions                                                                              |
-| ----------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| <img src="src/assets/predictions.png" alt="Custom Vision Icon" width="60%%"/> | <img src="src/assets/predictions-confidence.png" alt="Custom Vision Icon" width="100%"/> |
+<table>
+  <tr>
+    <th>Analyzed Image</th>
+    <th></th>
+  </tr>
+  <tr>
+    <td><img src="src/assets/predictions.png" alt="Annotated Image" width="100%"/></td>
+    <td><img src="src/assets/predictions-confidence.png" alt="Predictions" width="100%"/></td>
+  </tr>
+</table>
 
 
 The application consists of three parts:
