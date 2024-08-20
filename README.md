@@ -4,25 +4,8 @@
 
 
 
-## The application
-The Weed detection application is an AI image classification consisting of three parts:
-
-
-## Web frontend
-This is a React application built with ChakraUI components. It allows clients to upload a lawn image and sends it to a backend api for analysis. 
-
-### Image analysis request
-The request can be an uploaded image (bytes) or it can be a filename of one of the test files hosted in my Azure storage account.
-
-## FastAPI backend
-This consists of a FastAPI backend written in Python that communicates with the AI model in Azure using the Azure Vision SDK. The API receives image analysis requests from the frontend application and sends the image to an AI model in Azure to analyze ther image for presence of weed/grass. The response is sent back to the frontend application.
-
-## AI Object Detection model using Custom Azure AI Vision
-This module consists of a custom trained AI model using sample images of lawn with grass and weed.
-
-### Image analysis response
-Upon succesful analysis, the model returns an array of detected areas of grass and/or weed from the image. In addition, the confidence levels for the predicted areas are also returned.
-
+## 1. The application
+The Weed detection application is an AI image classification applicsation It take an image of a lawn and sends it to a custom AI model in Azure for analysis. The result is an annotated image that identifies areas within the image that contains grass or weed weed, with thier respective confidence levels for the predictions.
 
 # Sample analysis
 
@@ -30,7 +13,26 @@ Upon succesful analysis, the model returns an array of detected areas of grass a
 | ----------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
 | <img src="src/assets/predictions.png" alt="Custom Vision Icon" width="60%%"/> | <img src="src/assets/predictions-confidence.png" alt="Custom Vision Icon" width="100%"/> |
 
-## Analysis response json
+
+The application consists of three parts:
+
+## 1. Web frontend
+This is a React application built with ChakraUI components. It allows clients to upload a lawn image and sends it to a backend api for analysis. 
+
+### Image analysis request
+The request can be an uploaded image (bytes) or it can be a filename of one of the test files hosted in my Azure storage account.
+
+## 2. FastAPI backend
+This consists of a FastAPI backend written in Python that communicates with the AI model in Azure using the Azure Vision SDK. The API receives image analysis requests from the frontend application and sends the image to an AI model in Azure to analyze ther image for presence of weed/grass. The response is sent back to the frontend application.
+
+## 3. AI Object Detection model using Custom Azure AI Vision
+This module consists of a custom trained AI model using sample images of lawn with grass and weed.
+
+### Image analysis response
+Upon succesful analysis, the model returns an array of detected areas of grass and/or weed from the image. In addition, the confidence levels for the predicted areas are also returned.
+
+
+# Analysis response json
 ```json
 {
   "prediction_image_url": "predictions.jpg",
