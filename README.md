@@ -5,7 +5,7 @@
 
 
 ## The application
-The Weed detection application is an AI image classification applicsation It take an image of a lawn and sends it to a custom AI model in Azure for analysis. The result is an annotated image that identifies areas within the image that contains grass or weed weed, with thier respective confidence levels for the predictions.
+The Weed detection application is an AI image classification applicsation. It take an image of a lawn and sends it to a custom AI model in Azure for analysis. The result is an annotated image that identifies areas within the image that contains grass or weed weed, with thier respective confidence levels for the predictions.
 
 ## Sample analysis
 
