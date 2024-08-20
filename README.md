@@ -9,7 +9,7 @@ The Weed detection application is an AI image classification consisting of three
 
 
 ## Web frontend
-This a React application built with ChakraUI components. It allows clients to upload a lawn image and sends it to a backend api for analysis. 
+This is a React application built with ChakraUI components. It allows clients to upload a lawn image and sends it to a backend api for analysis. 
 
 ### Image analysis request
 The request can be an uploaded image (bytes) or it can be a filename of one of the test files hosted in my Azure storage account.
