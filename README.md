@@ -25,7 +25,7 @@ The request can be an uploaded image (bytes) or it can be a filename of one of t
 ## 2. FastAPI backend
 This consists of a FastAPI backend written in Python that communicates with the AI model in Azure using the Azure Vision SDK. The API receives image analysis requests from the frontend application and sends the image to an AI model in Azure to analyze ther image for presence of weed/grass. The response is sent back to the frontend application.
 
-## 3. AI Object Detection model using Custom Azure AI Vision
+## 3. AI Image Classification model using Custom Azure AI Vision
 This module consists of a custom trained AI model using sample images of lawn with grass and weed.
 
 ### Image analysis response
