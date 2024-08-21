@@ -17,7 +17,7 @@ The Weed detection application is an AI image classification applicsation. It ta
 </table>
 
 ## Deployment
-The application consists of three componenets deployed in separate environments.
+The application consists of three components deployed in separate environments.
 
 <img src="src/assets/weed-detection.png" alt="Predictions" width="100%"/>
 
